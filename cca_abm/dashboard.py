@@ -871,7 +871,7 @@ def _page_comparison(params: dict):
         st.info("Select at least 2 scenarios to compare.")
         return
 
-    if st.button("Run Comparison", type="primary", use_container_width=True):
+    if st.button("Run Scenario Comparison", type="primary", use_container_width=True, key="btn_scenario"):
         results = {}
         progress = st.progress(0, text="Running scenarios...")
         for i, name in enumerate(selected):
@@ -939,7 +939,7 @@ def _page_supply_explorer(params: dict):
         st.info("Select at least 1 schedule type.")
         return
 
-    if st.button("Run Comparison", type="primary", use_container_width=True):
+    if st.button("Run Supply Comparison", type="primary", use_container_width=True, key="btn_supply"):
         results = {}
         for stype in selected_types:
             p = copy.deepcopy(params)
@@ -1045,16 +1045,13 @@ def main():
     <style>
     /* Tighten spacing */
     .block-container { padding-top: 1.5rem; padding-bottom: 1rem; }
-    /* Metric cards */
+    /* Metric cards — theme-safe, no hardcoded colors */
     [data-testid="stMetric"] {
-        background-color: #f8f9fa;
-        border: 1px solid #e9ecef;
+        border: 1px solid rgba(128,128,128,0.25);
         border-radius: 8px;
         padding: 10px 14px;
     }
     [data-testid="stMetricLabel"] { font-size: 0.8rem; }
-    /* Sidebar header */
-    .sidebar .sidebar-content { padding-top: 1rem; }
     /* Tabs styling */
     .stTabs [data-baseweb="tab-list"] { gap: 8px; }
     .stTabs [data-baseweb="tab"] {
